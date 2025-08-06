@@ -1,0 +1,42 @@
+016 -----
+LLM cannot answer current events
+Suppose you want to get some info from a database
+For this purpose, agents come in
+Agent can be thought of like a bot
+Actions can be chained together, the output can be sent to llm
+Agent uses tools - langchain terminology
+Tools connect langchain with 3rd parties and exernal interfaces
+Tools can be database, online search tools etc
+An agent uses llms to perform the tasks asked
+Llm is the engine of an agent
+When an agent receives a task, first it calculates the subtasks to perform
+Chain of thought prompting - allows the llm to reason and show us its reasoning
+ReAct - reasoning and acting
+
+017 -----
+Langchain has implementations for all sorts of agents
+The different between agents is the algorithms on which the agents work on
+ReAct agent is the most popular way to implement an agent
+langchain.agents
+	- create_react_agent(llm, tools, prompts) - builtin function to create a ReAct agent
+	- AgentExecutor - runtime of the agent
+
+022 -----
+Either control the output with prompt engineering, or use output parsers
+prompt for output in json -
+	Create the following \
+	based on the information provided, create a json with the following keys - \
+	'summary' will be a string of 30-40 words, containing a short summary about the person \
+	'summary_word_count' will be an integer, that will contain the count of words in 'summary' \
+	'facts' will be a JSON array of length 1-3 of strings that will contain about 10-20 words each \
+	'facts_count' will an integer, that will contain the length of 'facts' array \
+
+	The above stated requests must be only from the information provided \
+
+	Information: ```{information}``` \
+output parsers can create structured data in many of the available formats
+langchain supports json as a default,
+	so when handling json, you will receive the actual object of the class
+	other formats - xml, csv
+	xml will output as a dict, you need to parse manually or other libraries
+	csv you can see as expected, comma separated
