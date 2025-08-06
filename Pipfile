@@ -12,6 +12,7 @@ langchain-perplexity = "*"
 langchain-openai = "*"
 langchain-tavily = "*"
 defusedxml = "*"
+flask = "*"
 
 [dev-packages]
 

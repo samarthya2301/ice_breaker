@@ -1,3 +1,4 @@
+from typing import Tuple
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
@@ -40,7 +41,7 @@ def get_prompt_template():
 		}
 	)
 
-def ice_break_with(name: str) -> Summary:
+def ice_break_with(name: str) -> Tuple[Summary, str]:
 
 	linkedin_data = get_linkedin_data(name)
 	prompt_template = get_prompt_template()
@@ -53,10 +54,12 @@ def ice_break_with(name: str) -> Summary:
 			"information": linkedin_data,
 		}
 	)
-	return response
+	print("\n\nResponse: ", response)
+	print("\n\nPhoto URL: ", linkedin_data.get("person").get("photoUrl"))
+	return response, linkedin_data.get("person").get("photoUrl")
 
 if __name__ == '__main__':
 
 	print("Hello, LangChain!\n***** ICE BREAKER *****")
-	response: Summary = ice_break_with("Samarthya Bararia")
-	print(response.model_dump_json())
+	response = ice_break_with("Samarthya Bararia")
+	print(response)
