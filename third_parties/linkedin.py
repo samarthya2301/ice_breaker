@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def get_mock():
-	mock_url_endpoint = "https://gist.githubusercontent.com/samarthya2301/039dfd60afe3854c665195b5a935edbe/raw/0f52d4ff99c9c4ac8f85e831d077921c2b94cf5c/ice_breaker_mock_1.json"
+	mock_url_endpoint = "https://gist.githubusercontent.com/samarthya2301/039dfd60afe3854c665195b5a935edbe/raw/90201b65e20e750a296c95a7699459d92f7509f1/ice_breaker_mock_1.json"
 	response = requests.get(
 		url=mock_url_endpoint,
 		timeout=10

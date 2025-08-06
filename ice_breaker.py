@@ -3,7 +3,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from third_parties.linkedin import scrap_linkedin_profile
 from agents.linkedin_lookup_agent import linkedin_lookup_agent
-from output_parsers import summary_parser_json
+from output_parsers import Summary, summary_parser_json
 
 load_dotenv()
 
@@ -40,18 +40,23 @@ def get_prompt_template():
 		}
 	)
 
-if __name__ == '__main__':
+def ice_break_with(name: str) -> Summary:
 
-	print("Hello, LangChain!\n***** ICE BREAKER *****")
-	linkedin_data = get_linkedin_data("Samarthya Bararia")
+	linkedin_data = get_linkedin_data(name)
 	prompt_template = get_prompt_template()
 
 	llm = ChatOpenAI(temperature=0, model="gpt-4o-mini")
 	chain = prompt_template | llm | summary_parser_json
-	response = chain.invoke(
+
+	response: Summary = chain.invoke(
 		input={
 			"information": linkedin_data,
 		}
 	)
-	print("Response Type: ", type(response))
-	print(response)
+	return response
+
+if __name__ == '__main__':
+
+	print("Hello, LangChain!\n***** ICE BREAKER *****")
+	response: Summary = ice_break_with("Samarthya Bararia")
+	print(response.model_dump_json())
