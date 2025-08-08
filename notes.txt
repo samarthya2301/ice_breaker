@@ -40,3 +40,8 @@ langchain supports json as a default,
 	other formats - xml, csv
 	xml will output as a dict, you need to parse manually or other libraries
 	csv you can see as expected, comma separated
+
+024 -----
+If you want to trace - LLM Calls, Tool Usage, LLM Model Latency, Token Count, Cost
+This can be achieved using LangSmith API
+It traces every thing in out application, which is useful when debugging etc.
