@@ -45,3 +45,19 @@ langchain supports json as a default,
 If you want to trace - LLM Calls, Tool Usage, LLM Model Latency, Token Count, Cost
 This can be achieved using LangSmith API
 It traces every thing in out application, which is useful when debugging etc.
+
+026 -----
+ReAct agents can be implemented locally also
+Currently we are using create_react_agent a langchain native method
+
+ReAct agent overveiw -
+Loop keeps running, until the answer is achieved
+In every iteration, agent can decide what to use. If another tool is required,
+or the same tool should be executed again, etc.
+
+Query
+  |
+Agent --LLM Call--> Thought --Praising--> Tool --Tool Execution--> Output --OK--> Answer
+  ^                                                                  |
+  |                                                                (NOTOK)
+  |------------------------------------------------------------------+
